@@ -1,41 +1,56 @@
 ```
 # Dependencies
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+node_modules/
 
-# Environment
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Environment variables
 .env
 .env.local
 .env.*
 
-# Logs
-*.log
-
-# Coverage
-.coverage
-coverage/
-htmlcov/
-
-# IDE
+# IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# OS
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+
+# Python cache (if any Python files exist in project)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Coverage reports
+coverage/
+htmlcov/
+
+# Local configuration
+*.local
+
+# OS generated files
 .DS_Store
 Thumbs.db
 
-# Build artifacts
-dist/
-build/
-*.so
-*.dylib
-*.dll
-*.exe
-*.out
+# Testing
+.nyc_output/
+coverage/
+
+# TypeScript/JavaScript specific
+vite.config.ts
+tsconfig.json
+tsconfig.node.json
+tsconfig.app.json
+eslint.config.js
 
 # Compressed files
 *.zip
