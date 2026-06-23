@@ -1,0 +1,107 @@
+# Prometheus Configuration for E-Commerce System Phase 5
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'ecommerce-monitor'
+
+# Alertmanager configuration (optional, for future)
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets:
+#           - alertmanager:9093
+
+# Rule files for alerting
+rule_files:
+  # - "alert_rules.yml"
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          service: 'prometheus'
+
+  # User Service
+  - job_name: 'user-service'
+    static_configs:
+      - targets: ['user_service:8001']
+        labels:
+          service: 'user-service'
+          team: 'platform'
+    metrics_path: /metrics
+    scrape_interval: 10s
+
+  # Inventory Service
+  - job_name: 'inventory-service'
+    static_configs:
+      - targets: ['inventory_service:8002']
+        labels:
+          service: 'inventory-service'
+          team: 'platform'
+    metrics_path: /metrics
+    scrape_interval: 10s
+
+  # Order Service
+  - job_name: 'order-service'
+    static_configs:
+      - targets: ['order_service:8003']
+        labels:
+          service: 'order-service'
+          team: 'platform'
+    metrics_path: /metrics
+    scrape_interval: 10s
+
+  # Payment Service
+  - job_name: 'payment-service'
+    static_configs:
+      - targets: ['payment_service:8004']
+        labels:
+          service: 'payment-service'
+          team: 'platform'
+    metrics_path: /metrics
+    scrape_interval: 10s
+
+  # Nginx API Gateway
+  - job_name: 'nginx-gateway'
+    static_configs:
+      - targets: ['gateway:80']
+        labels:
+          service: 'api-gateway'
+          team: 'infrastructure'
+    metrics_path: /nginx_metrics
+    scrape_interval: 10s
+
+  # Redis
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+        labels:
+          service: 'redis'
+          team: 'infrastructure'
+    # Redis exporter would typically run on a separate port
+    # This is a placeholder for the redis exporter
+
+  # RabbitMQ
+  - job_name: 'rabbitmq'
+    static_configs:
+      - targets: ['rabbitmq:15672']
+        labels:
+          service: 'rabbitmq'
+          team: 'infrastructure'
+    metrics_path: /metrics
+    # RabbitMQ management plugin provides metrics
+
+  # PostgreSQL
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['postgres:5432']
+        labels:
+          service: 'postgresql'
+          team: 'infrastructure'
+    # PostgreSQL exporter would typically run on a separate port
+    # This is a placeholder for the postgres exporter
