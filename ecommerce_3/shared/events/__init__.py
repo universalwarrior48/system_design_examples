@@ -12,6 +12,8 @@ from .models import (
     OrderConfirmedEvent,
     OrderCancelledEvent
 )
+from .publisher import EventPublisher, publisher
+from .consumer import EventConsumer, consumer
 
 __all__ = [
     "EventType",
@@ -22,5 +24,9 @@ __all__ = [
     "InventoryReservedEvent",
     "InventoryReleasedEvent",
     "OrderConfirmedEvent",
-    "OrderCancelledEvent"
+    "OrderCancelledEvent",
+    "EventPublisher",
+    "publisher",
+    "EventConsumer",
+    "consumer"
 ]
