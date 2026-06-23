@@ -1,22 +1,52 @@
 ```
+# Dependencies
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.venv/
+.Python
+env/
 venv/
+.venv/
 .env
 .env.local
 .env.*
-.vscode/
-.idea/
-*.log
-*.tmp
+.venv/
+venv/
+ENV/
+.envs/
+.python-version
+
+# Build and distribution artifacts
 dist/
 build/
+*.egg-info/
+.eggs/
+.installed.cfg
 .coverage
-coverage/
 htmlcov/
-.mypy_cache/
+.coverage.*
 .pytest_cache/
+.mypy_cache/
+.hypothesis/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Thumbs.db:encryptable
+
+# Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 ```
